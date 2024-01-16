@@ -35,8 +35,7 @@
                  Width="103"
                  LostFocus="OnVariantEdit" />
         <RadioButton Name="SochitanieIzHElementov1"
-                     
-                     Content="Сочетания из h элементов 1"
+                     Content="Сочетания из h элементов l"
                      HorizontalAlignment="Left"
                      Margin="61,113,0,0"
                      VerticalAlignment="Top" />
@@ -46,7 +45,7 @@
                      Margin="61,136,0,0"
                      VerticalAlignment="Top" />
         <RadioButton Name="RazmechenieIzHElementovPo1"
-                     Content="Размещение из h элементов по 1"
+                     Content="Размещение из h элементов по l"
                      HorizontalAlignment="Left"
                      Margin="61,156,0,0"
                      VerticalAlignment="Top" />

@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -64,34 +65,61 @@ namespace AmountOfInformationApp
 
         private void Rachet1(object sender, RoutedEventArgs e)
         {   //Провека на то что введено не пустое значение, что введен текст, а не строка
-            if (!int.TryParse(variantNumber.Text, out int _))
+            if (!int.TryParse(variantNumber.Text, out int variant))
             {
                 MessageBox.Show("Введите номер варианта", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
+            int h = variant + 2;
+            int l = h % 2 == 0 ? 3 : 2;
+            int alpha = 2;
+            int beta = 2;
+            int gamma = variant;
+
             //Проверка на то, что выброна хотя бы 1 радиокнопа
             if(SochitanieIzHElementov1.IsChecked == true)
             {
-
+                double Q = (double)Factorial(h) / (double)(Factorial(l) * Factorial(h-l));
+                output.Text = Q.ToString();
             } else if (SochetaniaSPovtoreniami.IsChecked == true) {
-
-            }else if (RazmechenieIzHElementovPo1.IsChecked == true)
+                double Q = (double)Factorial(h + l - 1) / (double)(Factorial(l) * Factorial(h - l));
+                output.Text = Q.ToString();
+            }
+            else if (RazmechenieIzHElementovPo1.IsChecked == true)
             {
-
+                double Q = (double)Factorial(h) / (double)Factorial(h - l);
+                output.Text = Q.ToString();
             } else if (RazmecheniaSPovtoreniem.IsChecked == true)
             {
-
+                double Q = Math.Pow((double)h, l);
+                output.Text = Q.ToString();
             } else if (PerestanovkiHElementiv.IsChecked == true)
             {
-
+                double Q = (double)Factorial(h);
+                output.Text = Q.ToString();
             } else if (PerestanovkiSPovtoreniavi.IsChecked == true)
             {
-
+                alpha = 2;
+                beta = 2;
+                gamma = variant;
+                double Q = (double)(alpha + beta + gamma) / (double)(Factorial(alpha) * Factorial(beta) * Factorial(gamma));
+                output.Text = Q.ToString("N6");
             }
             else
             {
                 MessageBox.Show("Выберите комбинаторный метод", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private int Factorial(int number)
+        {
+            if (number == 0)
+            {
+                return 1;
+            }
+
+            return number * Factorial(number - 1);
         }
     }
 }
