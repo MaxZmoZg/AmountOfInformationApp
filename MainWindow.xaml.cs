@@ -41,12 +41,15 @@ namespace AmountOfInformationApp
                 MessageBox.Show("Ошибка!");
             }
         }
+        /// <summary>
+        /// Провека на то что введено не пустое значение, что введен текст, а не строка при потере фокуса
+        /// </summary>
 
         private void OnVariantEdit(object sender, RoutedEventArgs e)
         {
             if (!int.TryParse(variantNumber.Text, out int _))
             {
-                MessageBox.Show("Ошибка!");
+                MessageBox.Show("Введено неккоректные данные, введите номер варианта", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 Calculate2.IsEnabled = false;
                 Calculate3.IsEnabled = false;
@@ -56,6 +59,39 @@ namespace AmountOfInformationApp
 
             Calculate2.IsEnabled = true;
             Calculate3.IsEnabled = true;
+        }
+
+
+        private void Rachet1(object sender, RoutedEventArgs e)
+        {   //Провека на то что введено не пустое значение, что введен текст, а не строка
+            if (!int.TryParse(variantNumber.Text, out int _))
+            {
+                MessageBox.Show("Введите номер варианта", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            //Проверка на то, что выброна хотя бы 1 радиокнопа
+            if(SochitanieIzHElementov1.IsChecked == true)
+            {
+
+            } else if (SochetaniaSPovtoreniami.IsChecked == true) {
+
+            }else if (RazmechenieIzHElementovPo1.IsChecked == true)
+            {
+
+            } else if (RazmecheniaSPovtoreniem.IsChecked == true)
+            {
+
+            } else if (PerestanovkiHElementiv.IsChecked == true)
+            {
+
+            } else if (PerestanovkiSPovtoreniavi.IsChecked == true)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Выберите комбинаторный метод", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
