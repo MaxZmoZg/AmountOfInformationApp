@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:AmountOfInformationApp"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450"
-        Width="800">
+        Height="550"
+        Width="800"
+        ResizeMode="CanMinimize">
     <Grid>
         <Label Name="methodsLabel"
                Content="1. Комбинаторные методы"
@@ -31,7 +32,8 @@
                  Margin="171,65,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
-                 Width="103"/>
+                 Width="103"
+                 LostFocus="OnVariantEdit" />
         <RadioButton Content="Сочетания из h элементов 1"
                      HorizontalAlignment="Left"
                      Margin="59,113,0,0"
@@ -69,28 +71,29 @@
                HorizontalAlignment="Left"
                Margin="320,112,0,0"
                VerticalAlignment="Top" />
-        <DataGrid Margin="525,65,48,228">
+        <DataGrid Margin="525,65,46,351">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Итерация"/>
+                <DataGridTextColumn Header="Итерация" />
                 <DataGridTextColumn Header="P1" />
                 <DataGridTextColumn Header="P2" />
                 <DataGridTextColumn Header="P3" />
                 <DataGridTextColumn Header="H" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Click="Button_Click"
-                Content="Расчёт 1"
+        <Button Content="Расчёт 1"
                 HorizontalAlignment="Left"
                 Margin="354,217,0,0"
                 VerticalAlignment="Top"
                 Height="25"
                 Width="98" />
-        <Button Content="Расчёт 2"
+        <Button Name="Calculate2"
+                Content="Расчёт 2"
                 HorizontalAlignment="Left"
                 Margin="528,217,0,0"
                 VerticalAlignment="Top"
                 Height="25"
-                Width="208" />
+                Width="208"
+                IsEnabled="False" />
         <Label Content="3 Метод харкевича"
                HorizontalAlignment="Left"
                Margin="477,249,0,0"
@@ -98,20 +101,23 @@
                Height="24"
                Width="128" />
         <Image HorizontalAlignment="Left"
-               Height="37"
+               Height="30"
                Margin="305,65,0,0"
                VerticalAlignment="Top"
-               Width="147" />
+               Width="173"
+               Source="/Resources/MetdodShennona.png" />
         <Image HorizontalAlignment="Left"
                Height="31"
                Margin="323,278,0,0"
                VerticalAlignment="Top"
-               Width="161" />
+               Width="161"
+               Source="/Resources/MethodHarkevicha.png" />
         <Image HorizontalAlignment="Left"
-               Height="29"
+               Height="33"
                Margin="559,278,0,0"
                VerticalAlignment="Top"
-               Width="162" />
+               Width="180"
+               Source="/Resources/MethodHarkevicha2.png" />
         <Label Content="Iцелес. &gt;0 - информация полезная"
                HorizontalAlignment="Left"
                Margin="323,316,0,0"
@@ -143,23 +149,20 @@
                  VerticalAlignment="Top"
                  Width="120"
                  Height="18" />
-        <TextBox HorizontalAlignment="Left"
-                 Margin="118,271,0,0"
-                 TextWrapping="Wrap"
-                 Text="3 Исходные данные"
-                 VerticalAlignment="Top"
-                 Width="120" />
         <Image HorizontalAlignment="Left"
-               Height="119"
-               Margin="65,302,0,0"
+               Height="205"
+               Margin="43,315,0,0"
                VerticalAlignment="Top"
-               Width="219" />
-        <Button Content="Расчёт 3"
+               Width="258"
+               Source="/Resources/graf.png" />
+        <Button Name="Calculate3"
+                Content="Расчёт 3"
                 HorizontalAlignment="Left"
                 Margin="354,399,0,0"
                 VerticalAlignment="Top"
                 Height="26"
-                Width="70" />
+                Width="70"
+                IsEnabled="False" />
         <Button Content="Очистка"
                 HorizontalAlignment="Left"
                 Margin="488,399,0,0"
@@ -172,6 +175,10 @@
                 VerticalAlignment="Top"
                 Height="23"
                 Width="69" />
+        <Label Content="3 исходные данные"
+               HorizontalAlignment="Left"
+               Margin="77,276,0,0"
+               VerticalAlignment="Top" />
 
     </Grid>
 </Window>

@@ -30,17 +30,32 @@ namespace AmountOfInformationApp
 
         }
 
-        private void Button_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Вычисляет
+        /// </summary>
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {   
             if (!int.TryParse(variantNumber.Text, out int _))
             {
                 MessageBox.Show("Ошибка!");
             }
+        }
+
+        private void OnVariantEdit(object sender, RoutedEventArgs e)
+        {
+            if (!int.TryParse(variantNumber.Text, out int _))
+            {
+                MessageBox.Show("Ошибка!");
+
+                Calculate2.IsEnabled = false;
+                Calculate3.IsEnabled = false;
+
+                return;
+            }
+
+            Calculate2.IsEnabled = true;
+            Calculate3.IsEnabled = true;
         }
     }
 }
