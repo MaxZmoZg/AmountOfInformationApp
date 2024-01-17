@@ -1,13 +1,15 @@
 ﻿<Window x:Class="AmountOfInformationApp.MainWindow"
+        Title="Laboratornaya1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmountOfInformationApp"
+        xmlns:winformchart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
         mc:Ignorable="d"
-        Title="MainWindow"
         Height="550"
         Width="800"
+        Background="AntiqueWhite"
         ResizeMode="CanMinimize">
     <Grid>
         <Label Name="methodsLabel"
@@ -79,33 +81,30 @@
                HorizontalAlignment="Left"
                Margin="320,112,0,0"
                VerticalAlignment="Top" />
-        <DataGrid Margin="525,65,46,351">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Итерация" />
-                <DataGridTextColumn Header="P1" />
-                <DataGridTextColumn Header="P2" />
-                <DataGridTextColumn Header="P3" />
-                <DataGridTextColumn Header="H" />
-            </DataGrid.Columns>
+        <DataGrid Name="RashetnieDannie"
+                  Margin="525,65,22,274"
+                  Background="White"
+                  BorderBrush="#FF0081FF">
         </DataGrid>
         <Button Content="Расчёт 1"
                 HorizontalAlignment="Left"
-                Margin="354,217,0,0"
+                Margin="357,280,0,0"
                 VerticalAlignment="Top"
                 Height="25"
                 Width="98"
                 Click="Rachet1" />
-        <Button Name="Calculate2"
+        <Button Name="Rachet2"
                 Content="Расчёт 2"
+                Click="Rachet2_Click"
                 HorizontalAlignment="Left"
-                Margin="528,217,0,0"
+                Margin="570,272,0,0"
                 VerticalAlignment="Top"
                 Height="25"
                 Width="208"
                 IsEnabled="False" />
         <Label Content="3 Метод харкевича"
                HorizontalAlignment="Left"
-               Margin="477,249,0,0"
+               Margin="488,297,0,0"
                VerticalAlignment="Top"
                Height="24"
                Width="128" />
@@ -117,46 +116,48 @@
                Source="/Resources/MetdodShennona.png" />
         <Image HorizontalAlignment="Left"
                Height="31"
-               Margin="323,278,0,0"
+               Margin="334,326,0,0"
                VerticalAlignment="Top"
                Width="161"
                Source="/Resources/MethodHarkevicha.png" />
         <Image HorizontalAlignment="Left"
                Height="33"
-               Margin="559,278,0,0"
+               Margin="570,326,0,0"
                VerticalAlignment="Top"
                Width="180"
                Source="/Resources/MethodHarkevicha2.png" />
         <Label Content="Iцелес. &gt;0 - информация полезная"
                HorizontalAlignment="Left"
-               Margin="323,316,0,0"
+               Margin="323,373,0,0"
                VerticalAlignment="Top" />
         <Label Content="Iцелес. = 0 - информация пустая"
                HorizontalAlignment="Left"
-               Margin="323,342,0,0"
+               Margin="323,399,0,0"
                VerticalAlignment="Top" />
         <Label Content="Iцелес. &lt;0 - дезинформация"
                HorizontalAlignment="Left"
-               Margin="323,368,0,0"
+               Margin="323,425,0,0"
                VerticalAlignment="Top" />
         <Label Content="Iцелес. 1"
                HorizontalAlignment="Left"
-               Margin="559,316,0,0"
+               Margin="559,373,0,0"
                VerticalAlignment="Top" />
-        <TextBox HorizontalAlignment="Left"
-                 Margin="645,320,0,0"
+        <TextBox x:Name="TextCeles1"
+                 HorizontalAlignment="Left"
+                 Margin="634,377,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
-                 Width="120" />
+                 Width="144" />
         <Label Content="Iцелес. 2"
                HorizontalAlignment="Left"
-               Margin="559,355,0,0"
+               Margin="559,412,0,0"
                VerticalAlignment="Top" />
-        <TextBox HorizontalAlignment="Left"
-                 Margin="645,363,0,0"
+        <TextBox Name="TextCeles2"
+                 HorizontalAlignment="Left"
+                 Margin="634,420,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
-                 Width="120"
+                 Width="144"
                  Height="18" />
         <Image HorizontalAlignment="Left"
                Height="205"
@@ -164,30 +165,53 @@
                VerticalAlignment="Top"
                Width="258"
                Source="/Resources/graf.png" />
-        <Button Name="Calculate3"
+        <Button Name="Rachet3"
                 Content="Расчёт 3"
                 HorizontalAlignment="Left"
-                Margin="354,399,0,0"
+                Margin="354,456,0,0"
                 VerticalAlignment="Top"
                 Height="26"
+                Click="Rachet3_Click"
                 Width="70"
                 IsEnabled="False" />
-        <Button Content="Очистка"
+        <Button Name="Ochistka"
+                Content="Очистка"
                 HorizontalAlignment="Left"
-                Margin="488,399,0,0"
+                Click="Ochistka_Click"
+                Margin="488,456,0,0"
                 VerticalAlignment="Top"
                 Height="26"
                 Width="71" />
-        <Button Content="Выход"
+        <Button Name="Exit"
+                Content="Выход"
                 HorizontalAlignment="Left"
-                Margin="645,402,0,0"
+                Margin="645,459,0,0"
                 VerticalAlignment="Top"
+                Click="Exit_Click"
                 Height="23"
                 Width="69" />
         <Label Content="3 исходные данные"
                HorizontalAlignment="Left"
                Margin="77,276,0,0"
                VerticalAlignment="Top" />
+        <WindowsFormsHost HorizontalAlignment="Left"
+                          Height="126"
+                          Margin="305,143,0,0"
+                          VerticalAlignment="Top"
+                          Width="206">
+            <winformchart:Chart x:Name="lineyniyGraphik"
+                                Dock="Fill">
+                <winformchart:Chart.Series>
+                    <winformchart:Series x:Name="series1"
+                                         ChartType="Line" />
+                </winformchart:Chart.Series>
+                <winformchart:Chart.ChartAreas>
+                    <winformchart:ChartArea />
+                </winformchart:Chart.ChartAreas>
+
+            </winformchart:Chart>
+        </WindowsFormsHost>
+
 
     </Grid>
 </Window>
